@@ -8,7 +8,7 @@ import vessel from './assests/Frame 334.png';
 
 const start = [22.1696, 91.4996];
 const end = [22.2637, 91.7159];
-const speed = 20; // speed in km/h
+const speed = 20; 
 const refreshRate = 500;
 
 const distanceBetweenCoords = (lat1, lon1, lat2, lon2) => {
@@ -29,13 +29,13 @@ const App = () => {
 
   useEffect(() => {
     const totalDistance = distanceBetweenCoords(start[0], start[1], end[0], end[1]);
-    console.log(totalDistance)
-    const duration = (totalDistance / speed) * 3600 * 1000;
+    console.log(totalDistance + 'Km')
+    const duration = totalDistance / speed; 
+    console.log(duration + 'hr');
 
     const interval = setInterval(() => {
       setDistance((prevDistance) => {
         const newDistance = prevDistance + (speed * (refreshRate / 1000)) / 3600;
-        console.log(newDistance);
         if (newDistance >= totalDistance) {
           clearInterval(interval);
           setPosition(end);
